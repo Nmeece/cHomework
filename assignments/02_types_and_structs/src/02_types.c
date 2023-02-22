@@ -2,7 +2,6 @@
 #include <math.h>
 
 // Include the correct header files containing the declaration of the functions required for  "powf"
-#include "myfunc.h"
 //
 
 // Create a variable of the type "float" called "myFloat_t"
@@ -22,7 +21,7 @@ int main(void) {
     // The names of these variables are val1 and val2.
     myFloat_t val1, val2;
     val1 = 3;
-    val2 = 3;
+    val2 = 3.01;
     // Declare (without intializing) a myFloat_t for storing the result. The name of this variable is result.
     myFloat_t result;
     result = myFunction(val1, val2);
@@ -36,13 +35,9 @@ int main(void) {
 // Define the function that returns a myFloat_t and takes two myFloat_t arguments. This function will raise the first argument to the power of the second argument.
 myFloat_t myFunction(myFloat_t float1, myFloat_t float2)
 {
-    myFloat_t n, result;
-
-    for(n = 1; n <= float2; ++n)
-    {
-        result = result + float1 * float1;
-    }
-
+    
+    float result = powf (float1,float2);
+    
     return(result);
 }
 //
