@@ -7,6 +7,10 @@ struct entry {
     struct entry  *next;
 };
 
+struct list {
+    struct entry *head;
+};
+
 
 // TODO: Write a function called 'insertEntry' to insert a new entry into a linked list. 
 
@@ -73,6 +77,10 @@ int main (void) {
 
 
     struct entry n1, n2, n3;
+
+    struct list newList;
+    newList.head = &n1;
+
     struct entry *list_pointer = &n1;
 
     n1.previous = (struct entry *) 0;
@@ -99,7 +107,7 @@ int main (void) {
     };
 
     insertEntry(&newFella, &n1,1);
-    list_pointer = &n1;
+    list_pointer = &newFella;
     while (list_pointer != (struct entry *) 0) {
         printf("after insert: %i\n", list_pointer->value);
         list_pointer = list_pointer->next;
