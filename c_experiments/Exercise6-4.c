@@ -15,11 +15,12 @@
     #include <stdio.h>
     #include <ctype.h>
 
-    int main(void) {
-        int retval = 0;
-        int number = 0;
+    int main(void) {        int retval = 0;
+        char retchar = '0';
+        int number = 0; 
         float accumulator = 0;
         char operator = '0';
+       
         
         printf("Simple printing calculator\n"
                "Enter data in the format: number operator\n"
@@ -30,11 +31,29 @@
         //TODO How do I end the program when an 'E' is entered while worring about scanf being happy?
         //TODO Where do I evaluate that scanf recieved good results, that it returned 2 ?
          
-        
-        while ((scanf("%i %c", &number, &operator)) == 2)  {
-            
+       
 
-            //if (isalpha(number) || ispunct(number))
+        do {         
+
+            retval = scanf("%i %c", &number, &operator); 
+
+            if ((retval == 1) && (number == 'E')) {                
+                printf("byeee\n");
+                break;
+            }
+            
+            if (retval != 2) {                
+                    printf("Invalid input, try again.\n");
+                    retval = 0;
+                    operator = '0';
+                    number = 0;
+                    do {
+                        retchar = getchar();
+                        printf ("Digested %c\n", retchar);
+                    }
+                     while (retchar != '\n');
+                    
+            }
             //    printf("Not a valid number.");
             //    break; 
 
@@ -79,6 +98,6 @@
                     printf(" = %f\n", accumulator);
                     break;
             }
-        }
+        } while (operator != 'E');
         return 0;
     }
