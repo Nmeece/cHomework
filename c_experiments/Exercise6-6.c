@@ -11,11 +11,11 @@
 
 int main () {
 
-    int number, maxMod, numToWrite;
+    int number, maxMod, numToWrite, numberCopy;
     int mod = 1;
 
-    printf("Gimme a number and I'll give you the words: \n");
-    scanf ("%i\n", &number);
+    printf("Gimme a number and I'll give you the words: ");
+    scanf ("%i", &number);
 
     //  create copy of number to do work on; workingNum
     //  print word zero if number is 0
@@ -26,13 +26,11 @@ int main () {
     //      
 
     int workNum = 1;
-    int calcNum;
-
-    if (number == 0)
-        printf("zero ");
-
-    if (number < 0)
+    
+    if (number < 0) {
         printf("negative ");
+        number = -number;
+    }
 
     //  Finds order of magnitude
     while (number - workNum != 0) {
@@ -41,51 +39,69 @@ int main () {
         workNum = number % mod;
     }
 
-    maxMod = mod / 10;
+    maxMod = mod;
+    numberCopy = number;
 
-    while (mod != 0) {
-
-        numToWrite = number / mod; // 4
+    do {
+        
+        maxMod /= 10;
+        numToWrite = numberCopy / maxMod; // 4
 
         switch (numToWrite) {
 
-            case '1':
+            case 0:
+                printf("zero ");
+                break;
+
+            case 1:
                 printf("one ");
+                break;
 
-            case '2':
+            case 2:
                 printf("two ");
+                break;
 
-            case '3':
+            case 3:
                 printf("three ");
+                break;
 
-            case '4':
+            case 4:
                 printf("four ");
+                break;
             
-            case '5':
+            case 5:
                 printf("five ");
+                break;
             
-            case '6':
+            case 6:
                 printf("six ");
+                break;
             
-            case '7':
+            case 7:
                 printf("seven ");
+                break;
 
-            case '8':
+            case 8:
                 printf("eight ");
+                break;
             
-            case '9':
+            case 9:
                 printf("nine ");
+                break;
             
             default:
                 printf("Error calculating translation.");
             
         }
+        int p = numToWrite * maxMod;
+        int j = numberCopy - p;
+        numberCopy = j;
 
-        calcNum = number - (numToWrite * mod); // 
-
+        
     }
+    while (maxMod != 1);
 
-
+    printf("\n");
 
     return 0;
 }
