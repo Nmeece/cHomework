@@ -21,7 +21,7 @@ int main (void) {
     _Bool isPrime;
 
     //  eval 2 through 50 for primeness
-    for ( p = 2; p <= 50; ++p) {
+    for ( p = 2; p <= (__INT_MAX__>>16); ++p) {
         
         isPrime = true;
         
@@ -29,7 +29,7 @@ int main (void) {
             continue;
 
         //  start with a divisor of 2 and as long as d < p, increment d by one after evaluating next for loop
-        for (d = 2;d < p && isPrime == 1; ++d){
+        for (d = 2; d < p && isPrime == 1; ++d){
 
             //  if divisor is even, exit to outer loop
             if (d % 2 == 0)
@@ -42,7 +42,7 @@ int main (void) {
 
         //  if p is prime, print p
         if ( isPrime != 0)
-            printf("%i ", p);
+            printf("%i\r\n ", p);
             
     }
 
