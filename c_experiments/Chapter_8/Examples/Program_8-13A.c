@@ -32,7 +32,7 @@ int main (void)
     return 0;
 }
 
-//  Function to multiply a 3 x 5 array by a scalar
+//  Function to multiply an array by a scalar
 
 void scalarMultiply (int nRows, int nCols,
                      int matrix[nRows][nCols], int scalar)
@@ -44,7 +44,7 @@ void scalarMultiply (int nRows, int nCols,
             matrix[row][column] *=scalar;
 }
 
-//  Function to print contents of a 3 x 5 matrix to the console
+//  Function to print contents of a matrix to the console
 
 void displayMatrix (int nRows, int nCols, int matrix[nRows][nCols])
 {
