@@ -9,6 +9,9 @@
 int gArray[16] = { 34, -5, 6, 0, 12, 100, 56, 22,
                    44, -3, -9, 12, 17, 22, 6, 11 };
 
+const int nRows    = 7;
+const int nColumns = 5;
+
 int gMatrix[7][5] =   
 {   
     {  0,  1,  2,  3,  4 },
@@ -22,9 +25,15 @@ int gMatrix[7][5] =
 
 int gTestPrime = 97;
 
+int numArrayElements = 16;
+
+char order = 'u';
+
+
+
 //  Function to sort an array of integers into either ascending or descending order
 
-void sort (char order, int n)
+void sort (void)
 //  sort ((ascending or descending), (number of elements in the array))
 //  order: u - ascending
 //         d - descending
@@ -34,8 +43,8 @@ void sort (char order, int n)
     switch (order)
     {
         case 'u':
-            for ( i = 0; i < n - 1; ++i )                //  Sequences through array from first element to second-to-last element
-                for ( j = i + 1; j < n; ++j )            //  Sequences from i to the last element in the array 
+            for ( i = 0; i < numArrayElements - 1; ++i )                //  Sequences through array from first element to second-to-last element
+                for ( j = i + 1; j < numArrayElements; ++j )            //  Sequences from i to the last element in the array 
                     if ( gArray[i] > gArray[j]) {        //  If elements are out of order ( i > j ), switch elements
                         temp      = gArray[i];           //  Temp used as temporary storage to facilitate the switch
                         gArray[i] = gArray[j];
@@ -45,8 +54,8 @@ void sort (char order, int n)
             break;
 
         case 'd':
-            for ( i = 0; i < n - 1; ++i )                //  Sequences through array from first element to second-to-last element
-                for ( j = i + 1; j < n; ++j )            //  Sequences from i to the last element in the array 
+            for ( i = 0; i < numArrayElements - 1; ++i )                //  Sequences through array from first element to second-to-last element
+                for ( j = i + 1; j < numArrayElements; ++j )            //  Sequences from i to the last element in the array 
                     if ( gArray[i] < gArray[j]) {        //  If elements are out of order ( i < j ), switch elements
                         temp      = gArray[i];           //  Temp used as temporary storage to facilitate the switch
                         gArray[i] = gArray[j];
@@ -65,7 +74,7 @@ void sort (char order, int n)
 
 //  Function to transpose and print contents of gMatrix
 
-void transposeMatrix(int nRows, int nColumns)
+void transposeMatrix(void)
 {
     int transMatrix[nColumns][nRows];
     int row, col;
@@ -100,11 +109,11 @@ void displayMatrix (int nRows, int nCols, int matrix[nRows][nCols])
 
 //  Function to calculate the sum of all elements in global array gArray
 
-int arraySum (int n)
+int arraySum (void)
 {
     int i, total = 0;
 
-    for ( i = 0; i < n; ++i)
+    for ( i = 0; i < numArrayElements; ++i)
         total += gArray[i];
     
     return total;
@@ -130,7 +139,7 @@ int main (void)
 
     printf ("The contents of global array gArray in ascending order:\n\r");
     
-    sort ('u', 16);
+    sort ();
 
     for ( i = 0; i < 16; ++i )
         printf ("%i ", gArray[i]);
@@ -138,10 +147,12 @@ int main (void)
     printf ("\n\r\n\r");
     
 
+
+    order = 'd';
 
     printf ("The contents of global array gArray in descending order:\n\r");
 
-    sort ('d', 16);
+    sort ();
 
     for ( i = 0; i < 16; ++i )
         printf ("%i ", gArray[i]);
@@ -150,7 +161,7 @@ int main (void)
     
 
 
-    printf ("The sum of global array gArray is %i\n\r\n\r", arraySum(16));
+    printf ("The sum of global array gArray is %i\n\r\n\r", arraySum());
 
 
 
@@ -173,7 +184,7 @@ int main (void)
     
     displayMatrix(7, 5, gMatrix);
 
-    transposeMatrix(7, 5);
+    transposeMatrix();
 
     return 0;
 }
